@@ -18,11 +18,14 @@ describe('vuePropsTemplate', () => {
       array pArray
 
       required string rpString
+
+      string pdString = ${'foo-bar'}
+      array pdArray = ${[11, 22, 33]}
     `
   })
 
   it('accepts all lines expect for empty ones', () => {
-    expect(Object.keys(props).length).equal(7)
+    expect(Object.keys(props).length).equal(9)
   })
 
   context('accepts type as', () => {
@@ -58,6 +61,16 @@ describe('vuePropsTemplate', () => {
 
     it('undefined if not specified', () => {
       expect(props.pString.required).to.be.undefined
+    })
+  })
+
+  context('accepts default values for', () => {
+    it('string', () => {
+      expect(props.pdString.default).equal('foo-bar')
+    })
+
+    it('array', () => {
+      expect(props.pdArray.default).eql([11, 22, 33])
     })
   })
 })
