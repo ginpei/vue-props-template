@@ -6,10 +6,7 @@
     "lint": "eslint ./*.js test/*.js",
     "watch": "chokidar ./*.js test/*.js -c 'npm run lint && npm run test && echo OK \\(`date`\\)'"
   },
-  "dependencies": {
-    "vue": "^2.1.4",
-    "vuex": "^2.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "chai": "^3.5.0",
     "chokidar-cli": "^1.2.0",
