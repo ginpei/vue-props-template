@@ -1,0 +1,18 @@
+{
+  "private": "true",
+  "scripts": {
+    "assert": "node example.js",
+    "start": "npm run vue-watch",
+    "vue-lint": "eslint ./*.js",
+    "vue-watch": "chokidar ./*.js -c 'npm run vue-lint && npm run assert && echo OK \\(`date`\\)'"
+  },
+  "dependencies": {
+    "chokidar-cli": "^1.2.0",
+    "eslint": "^3.11.1",
+    "eslint-config-vue": "^2.0.1",
+    "eslint-plugin-vue": "^1.0.0",
+    "vue": "^2.1.4",
+    "vuex": "^2.0.0"
+  },
+  "devDependencies": {}
+}
