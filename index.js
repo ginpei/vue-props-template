@@ -42,3 +42,12 @@ module.exports = function (strings) {
 
   return props
 }
+
+module.exports.extend = function (source, extension) {
+  for (const p in extension) {
+    for (const q in extension[p]) {
+      source[p][q] = extension[p][q]
+    }
+  }
+  return source
+}

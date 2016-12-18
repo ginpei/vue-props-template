@@ -9,7 +9,7 @@ describe('vuePropsTemplate', () => {
   let props
 
   beforeEach(() => {
-    props = vuePropsTemplate`
+    props = vuePropsTemplate.extend(vuePropsTemplate`
       string pString
       number pNumber
       boolean pBoolean
@@ -21,11 +21,20 @@ describe('vuePropsTemplate', () => {
 
       string pdString = ${'foo-bar'}
       array pdArray = ${[11, 22, 33]}
-    `
+
+      string pvString
+    `, {
+      pvString: {
+        validator: function (value) {
+          return value.startsWith('ok-')
+        },
+        whatever: 'whatever'
+      }
+    })
   })
 
   it('accepts all lines expect for empty ones', () => {
-    expect(Object.keys(props).length).equal(9)
+    expect(Object.keys(props).length).equal(10)
   })
 
   context('accepts type as', () => {
@@ -71,6 +80,21 @@ describe('vuePropsTemplate', () => {
 
     it('array', () => {
       expect(props.pdArray.default).eql([11, 22, 33])
+    })
+  })
+
+  describe('accepts extensions', () => {
+    it('validator', () => {
+      expect(props.pvString.validator('ok-123')).to.be.true
+      expect(props.pvString.validator('ng-123')).to.be.false
+    })
+
+    it('whatever', () => {
+      expect(props.pvString.whatever).equal('whatever')
+    })
+
+    it('existings', () => {
+      expect(props.pvString.type).equal(String)
     })
   })
 })
