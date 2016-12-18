@@ -10,21 +10,21 @@ describe('vuePropsTemplate', () => {
 
   beforeEach(() => {
     props = vuePropsTemplate.extend(vuePropsTemplate`
-      string pString
-      number pNumber
-      boolean pBoolean
-      function pFunction
-      object pObject
-      array pArray
+      string simpleString
+      number simpleNumber
+      boolean simpleBoolean
+      function simpleFunction
+      object simpleObject
+      array simpleArray
 
-      required string rpString
+      required string requiredString
 
-      string pdString = ${'foo-bar'}
-      array pdArray = ${[11, 22, 33]}
+      string defaultString = ${'foo-bar'}
+      array defaultArray = ${[11, 22, 33]}
 
-      string pvString
+      string extendedString
     `, {
-      pvString: {
+      extendedString: {
         validator: function (value) {
           return value.startsWith('ok-')
         },
@@ -39,62 +39,62 @@ describe('vuePropsTemplate', () => {
 
   context('accepts type as', () => {
     it('string', () => {
-      expect(props.pString.type).equal(String)
+      expect(props.simpleString.type).equal(String)
     })
 
     it('Number', () => {
-      expect(props.pNumber.type).equal(Number)
+      expect(props.simpleNumber.type).equal(Number)
     })
 
     it('boolean', () => {
-      expect(props.pBoolean.type).equal(Boolean)
+      expect(props.simpleBoolean.type).equal(Boolean)
     })
 
     it('function', () => {
-      expect(props.pFunction.type).equal(Function)
+      expect(props.simpleFunction.type).equal(Function)
     })
 
     it('object', () => {
-      expect(props.pObject.type).equal(Object)
+      expect(props.simpleObject.type).equal(Object)
     })
 
     it('array', () => {
-      expect(props.pArray.type).equal(Array)
+      expect(props.simpleArray.type).equal(Array)
     })
   })
 
   context('sets required', () => {
     it('true if specified', () => {
-      expect(props.rpString.required).to.be.true
+      expect(props.requiredString.required).to.be.true
     })
 
     it('undefined if not specified', () => {
-      expect(props.pString.required).to.be.undefined
+      expect(props.simpleString.required).to.be.undefined
     })
   })
 
   context('accepts default values for', () => {
     it('string', () => {
-      expect(props.pdString.default).equal('foo-bar')
+      expect(props.defaultString.default).equal('foo-bar')
     })
 
     it('array', () => {
-      expect(props.pdArray.default).eql([11, 22, 33])
+      expect(props.defaultArray.default).eql([11, 22, 33])
     })
   })
 
   describe('accepts extensions', () => {
     it('validator', () => {
-      expect(props.pvString.validator('ok-123')).to.be.true
-      expect(props.pvString.validator('ng-123')).to.be.false
+      expect(props.extendedString.validator('ok-123')).to.be.true
+      expect(props.extendedString.validator('ng-123')).to.be.false
     })
 
     it('whatever', () => {
-      expect(props.pvString.whatever).equal('whatever')
+      expect(props.extendedString.whatever).equal('whatever')
     })
 
     it('existings', () => {
-      expect(props.pvString.type).equal(String)
+      expect(props.extendedString.type).equal(String)
     })
   })
 })
