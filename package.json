@@ -1,16 +1,18 @@
 {
   "private": "true",
   "scripts": {
-    "assert": "node example.js",
     "start": "npm run watch",
-    "lint": "eslint ./*.js",
-    "watch": "chokidar ./*.js -c 'npm run lint && npm run assert && echo OK \\(`date`\\)'"
+    "test": "mocha",
+    "lint": "eslint ./*.js test/*.js",
+    "watch": "chokidar ./*.js test/*.js -c 'npm run lint && npm run test && echo OK \\(`date`\\)'"
   },
   "dependencies": {
+    "chai": "^3.5.0",
     "chokidar-cli": "^1.2.0",
     "eslint": "^3.11.1",
     "eslint-config-vue": "^2.0.1",
     "eslint-plugin-vue": "^1.0.0",
+    "mocha": "^3.2.0",
     "vue": "^2.1.4",
     "vuex": "^2.0.0"
   },
