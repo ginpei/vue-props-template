@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue Props Template</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Vue Props Template</h1>
+    <p><a href="https://github.com/ginpei/vue-props-template">ginpei/vue-props-template: Write vue's props through template literal.</a></p>
+    <h2>Examples</h2>
+    <h3>Basic</h3>
+    <pre>const pt = require('vue-props-template')
+const UserItem = {
+  template: '&lt;li&gt;{{name}} is {{age}} years old.&lt;/li&gt;',
+  props: pt`
+    string name
+    number age
+  `
+}</pre>
+    <pre>&lt;ul&gt;
+  &lt;user-item v-for="u in users" :name="u.name" :age="u.age"&gt;&lt;/user-item&gt;
+&lt;/ul&gt;</pre>
+    <pre>data:  {
+  users: [
+    { name: 'Alice', age: 11 },
+    { name: 'Bob', age: 22 },
+    { name: 'Charlie', age: '33' }
+  ]
+}</pre>
+    <div class="jumbotron">
+      <div id="app"></div>
+    </div>
+    <p class="help-block">You'll see warning because of age's type at your dev tools.</p>
+    <blockquote>[Vue warn]: Invalid prop: type check failed for prop "age". Expected Number, got String.<br />(found in component &lt;user-item&gt;)</blockquote>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.6/vue.js"></script>
+  <script src="vue-props-template.js"></script>
+  <script src="js.js"></script>
+</body>
+</html>
