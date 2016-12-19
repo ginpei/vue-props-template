@@ -1,6 +1,7 @@
 {
   "private": "true",
   "scripts": {
+    "gh-pages": "cp ./index.js gh-pages/vue-props-template.js; cd gh-pages; git add ./vue-props-template.js",
     "start": "npm run watch",
     "test": "mocha",
     "lint": "eslint ./*.js test/*.js",
