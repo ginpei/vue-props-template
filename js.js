@@ -20,7 +20,7 @@ const App = {
       users: [
         { name: 'Alice', age: 11 },
         { name: 'Bob', age: 22 },
-        { name: 'Charlie', age: '33' }
+        { name: 'Charlie', age: 'thirty-three' }
       ]
     }
   }
