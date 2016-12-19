@@ -19,7 +19,7 @@ const UserItem = {
 
 Check the original documents.
 
- - [Components - vue.js &gt; Props](https://vuejs.org/v2/guide/components.html#Props)
+ - [Components - vue.js &gt; Props &gt; Prop Validation](https://vuejs.org/v2/guide/components.html#Prop-Validation)
 
 ## Installation
 
