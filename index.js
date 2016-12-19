@@ -1,3 +1,14 @@
+/* global define */
+
+(function (global, factory) {
+  if (typeof exports === 'object' && typeof module !== 'undefined') {
+    module.exports = factory()
+  } else if (typeof define === 'function' && define.amd) {
+    define(factory)
+  } else {
+    global.vuePropsTemplate = factory()
+  }
+}(this, function () {
 'use strict'
 
 const TYPES = {
@@ -9,7 +20,7 @@ const TYPES = {
   string: String
 }
 
-module.exports = function (strings) {
+function vuePropsTemplate (strings) {
   const rxLine = /^\s*(required\s+)?(\w+)\s+(\w+)(\s*=\s*__VUE_PROPS_TEMPLATE_DEFAULT_VALUE_PLACEHOLDER__)?\s*$/
   const fullText = strings.join('__VUE_PROPS_TEMPLATE_DEFAULT_VALUE_PLACEHOLDER__')
   const props = {}
@@ -43,11 +54,14 @@ module.exports = function (strings) {
   return props
 }
 
-module.exports.extend = function (source, extension) {
-  for (const p in extension) {
-    for (const q in extension[p]) {
+vuePropsTemplate.extend = function (source, extension) {
+  for (var p in extension) {
+    for (var q in extension[p]) {
       source[p][q] = extension[p][q]
     }
   }
   return source
 }
+
+return vuePropsTemplate
+}))
