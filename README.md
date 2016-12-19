@@ -9,7 +9,7 @@ const pt = require('vue-props-template')
 const UserItem = {
   template: '<li>{{name}} is {{age}} years old.</li>',
   props: pt`
-    string name
+    required string name = ${'Anonymous'}
     number age
   `
 }
