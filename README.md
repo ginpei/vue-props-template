@@ -2,6 +2,8 @@ Note: This is still under development.
 
 # vue-props-template
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ginpei/vue-props-template.svg)](https://greenkeeper.io/)
+
 Write vue's props through template literal.
 
 ```javascript
